@@ -30,6 +30,8 @@ static uchar ordered8to3(int index, uchar value){
 }
 
 static uchar quantize8to3(int index, uchar value){
+    (void)index;
+
     return value >> 5;
 }
 
@@ -220,7 +222,7 @@ int loadrgb_kb(usbdevice* kb, lighting* light, int mode){
                 if(!usbrecv(kb, data_pkt[i + clr * 4], in_pkt[i]))
                     return -1;
 
-                uchar* comparePacket = data_pkt[i + clr * 4];   ///> That is the old comparison method: you get back what you sent.
+                uchar* comparePacket = data_pkt[i + clr * 4];   ///< That is the old comparison method: you get back what you sent.
                 /// Normally a firmware version >= 2.05 runs with the new compare array.
                 /// Up to now there is a 2.04 running in K70 RGB Lux with the same behavior.
                 /// It seems that K70RGB has the same problem
